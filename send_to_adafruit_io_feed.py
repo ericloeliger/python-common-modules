@@ -2,6 +2,13 @@
 
 from Adafruit_IO import *
 from __main__ import *
+logger = logging.getLogger('send_to_adafruit_io_feed.py')
+handler = logging.FileHandler('%s%s' % (log_path_linux,  log_name))
+formatter = logging.Formatter('%(asctime)s %(name)-12s %(levelname)-8s %(message)s')
+handler.setFormatter(formatter)
+logger.addHandler(handler)
+logger.setLevel(logging.DEBUG)
+
 
 def sendToAdafruitIOFeed(clientUser, clientKey, feedDictionary):
     # setup to adafruit IO feed
